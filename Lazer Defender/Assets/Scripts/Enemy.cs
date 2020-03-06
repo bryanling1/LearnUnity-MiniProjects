@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float lowerTimeBetweenShots = 0.5f;
     [SerializeField] float upperTimeBetweenShots = 2f;
+    [SerializeField] GameObject explosionFX;
+    [SerializeField] float explosionDuration = 1f;
 
     float timer;
     void Start()
@@ -32,6 +34,10 @@ public class Enemy : MonoBehaviour
         health -= damageDealer.getDamage();
         if(health <= 0){
             Destroy(gameObject);
+            var explodeParticles = Instantiate(explosionFX,
+            transform.position,
+            Quaternion.identity);
+            Destroy(explodeParticles, explosionDuration);
         }
     }
 

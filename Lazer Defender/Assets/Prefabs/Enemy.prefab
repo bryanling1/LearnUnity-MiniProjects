@@ -107,12 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd93d1dd74a88346a26e1a03549b243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 100
   projectileObject: {fileID: 3524746077620796261, guid: 5af653d507da2d547b48569d60adfc96,
     type: 3}
   projectileSpeed: 10
   lowerTimeBetweenShots: 0.66
   upperTimeBetweenShots: 0.85
+  explosionFX: {fileID: 8191961601136200597, guid: c335c67067b05194ab05d3e16fc240d7,
+    type: 3}
+  explosionDuration: 0.3
 --- !u!58 &5075156100660957778
 CircleCollider2D:
   m_ObjectHideFlags: 0
