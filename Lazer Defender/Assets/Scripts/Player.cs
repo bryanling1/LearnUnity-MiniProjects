@@ -5,11 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // config
+    [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 0.5f;
+    [SerializeField] int health = 1000;
+
+    [Header("Lazer")]
     [SerializeField] GameObject lazerPrefab;
     [SerializeField] float lazerVelocity = 10f;
     [SerializeField] float lazerDelay = 0.5f;
+    
 
     //Cached references
     float xMin;
@@ -63,6 +68,18 @@ public class Player : MonoBehaviour
                 lazer.GetComponent<Rigidbody2D>().velocity = new Vector2(0, lazerVelocity);
                 yield return new WaitForSeconds(lazerDelay);
             }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+        processHit(damageDealer);
+    }
+
+    private void processHit(DamageDealer damageDealer){
+        health -= damageDealer.getDamage();
+        if(health <= 0){
+            Destroy(gameObject);
         }
+    }
 
 }

@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour
     private void shootProjectiles(){
         timer -= Time.deltaTime;
         if(timer <= 0f){   
-            Debug.Log("shoot");
             GameObject lazer = Instantiate(projectileObject, 
             gameObject.transform.position, 
             Quaternion.identity) as GameObject;
