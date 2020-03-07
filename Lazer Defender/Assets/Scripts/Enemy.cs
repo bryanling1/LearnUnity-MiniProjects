@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float upperTimeBetweenShots = 2f;
     [SerializeField] GameObject explosionFX;
     [SerializeField] float explosionDuration = 1f;
+    [SerializeField] AudioClip explosionSound;
+    [SerializeField][Range(0, 1)] float explodeVolume = 1f;
 
     float timer;
     void Start()
@@ -34,10 +36,12 @@ public class Enemy : MonoBehaviour
         health -= damageDealer.getDamage();
         if(health <= 0){
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, explodeVolume);
             var explodeParticles = Instantiate(explosionFX,
             transform.position,
             Quaternion.identity);
             Destroy(explodeParticles, explosionDuration);
+
         }
     }
 

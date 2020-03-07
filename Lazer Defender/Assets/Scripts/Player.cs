@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject lazerPrefab;
     [SerializeField] float lazerVelocity = 10f;
     [SerializeField] float lazerDelay = 0.5f;
+    [SerializeField] AudioClip fireSound;
+    [SerializeField][Range(0,1)] float fireVolume = 1f;
+
     
 
     //Cached references
@@ -33,7 +36,6 @@ public class Player : MonoBehaviour
         move();
         shoot();
     }
-
 
     private void setupBoundaries(){
         xMin = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour
 
     IEnumerator shootAndHold(){
             while(true){
+                AudioSource.PlayClipAtPoint(fireSound, Camera.main.transform.position, fireVolume);
                 GameObject lazer = Instantiate(lazerPrefab, transform.position, Quaternion.identity) as GameObject;
                 lazer.GetComponent<Rigidbody2D>().velocity = new Vector2(0, lazerVelocity);
                 yield return new WaitForSeconds(lazerDelay);

@@ -116,6 +116,8 @@ MonoBehaviour:
   explosionFX: {fileID: 8191961601136200597, guid: c335c67067b05194ab05d3e16fc240d7,
     type: 3}
   explosionDuration: 0.3
+  explosionSound: {fileID: 8300000, guid: 2ab29a0779529724c9a066f1e1b1ca5e, type: 3}
+  explodeVolume: 1
 --- !u!58 &5075156100660957778
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -96,11 +96,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 13
   padding: 0.5
-  playerHealth: 1000
+  health: 1000
   lazerPrefab: {fileID: 3524746077620796261, guid: 2e94032723417ad4e950bc6af6d98aa7,
     type: 3}
   lazerVelocity: 20
   lazerDelay: 0.08
+  fireSound: {fileID: 8300000, guid: dd1861f2471470144b17c4001d30667b, type: 3}
+  fireVolume: 0.141
 --- !u!60 &2904616801887303636
 PolygonCollider2D:
   m_ObjectHideFlags: 0
