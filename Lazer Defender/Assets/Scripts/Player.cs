@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 0.5f;
     [SerializeField] int health = 1000;
+    [SerializeField] GameObject deathExplosionFX;
+    [SerializeField] float deathDuration = 1f;
 
     [Header("Lazer")]
     [SerializeField] GameObject lazerPrefab;
@@ -81,8 +83,15 @@ public class Player : MonoBehaviour
     private void processHit(DamageDealer damageDealer){
         health -= damageDealer.getDamage();
         if(health <= 0){
+            FindObjectOfType<SceneLoader>().loadLoseScene();
+            var explosion = Instantiate(deathExplosionFX, transform.position, transform.rotation) as GameObject;
+            Destroy(explosion, deathDuration);
             Destroy(gameObject);
+            
         }
     }
+
+    
+
 
 }
