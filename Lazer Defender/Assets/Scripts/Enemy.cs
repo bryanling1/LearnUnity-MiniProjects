@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     private void processHit(DamageDealer damageDealer){
         health -= damageDealer.getDamage();
         if(health <= 0){
+            FindObjectOfType<GameScore>().updateScoreOnEnemyKill();
             Destroy(gameObject);
             AudioSource.PlayClipAtPoint(explosionSound, Camera.main.transform.position, explodeVolume);
             var explodeParticles = Instantiate(explosionFX,
